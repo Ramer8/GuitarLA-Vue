@@ -1,3 +1,14 @@
+<script setup>
+import { ref, reactive } from "vue"
+import { db } from "./data/guitars"
+// const state = reactive({
+//   guitars: db,
+// })
+
+const guitars = ref([db])
+console.log(guitars.value)
+</script>
+
 <template>
   <header class="py-5 header">
     <div class="container-xl">
@@ -364,9 +375,5 @@
     </div>
   </footer>
 </template>
-
-<script>
-export default {}
-</script>
 
 <style lang="scss" scoped></style>
