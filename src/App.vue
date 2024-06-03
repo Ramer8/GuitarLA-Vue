@@ -6,10 +6,17 @@ import Guitar from "./components/Guitar.vue"
 //   guitars: db,
 // })
 const guitars = ref([])
+const kart = ref([])
 
 onMounted(() => {
   guitars.value = db
 })
+
+const addKart = (guitar) => {
+  kart.value.push(guitar)
+  kart.amount = 1
+  console.log(guitar)
+}
 </script>
 
 <template>
@@ -109,7 +116,11 @@ onMounted(() => {
     <h2 class="text-center">Nuestra Colección</h2>
 
     <div class="row mt-5">
-      <Guitar v-for="guitar in guitars" v-bind:guitar="guitar" />
+      <Guitar
+        v-for="guitar in guitars"
+        v-bind:guitar="guitar"
+        @add-Kart="addKart"
+      />
     </div>
   </main>
 

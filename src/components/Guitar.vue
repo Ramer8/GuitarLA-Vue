@@ -1,9 +1,5 @@
 <script setup>
-// export default {
-//   setup() {
-//     return {}
-//   },
-// }
+import { ref } from "vue"
 
 const props = defineProps({
   guitar: {
@@ -11,6 +7,8 @@ const props = defineProps({
     required: true,
   },
 })
+
+defineEmits(["add-Kart"])
 </script>
 
 <template>
@@ -33,7 +31,11 @@ const props = defineProps({
         $
         {{ guitar.price }}
       </p>
-      <button type="button" class="btn btn-dark w-100">
+      <button
+        type="button"
+        class="btn btn-dark w-100"
+        @:click="$emit('add-Kart', guitar)"
+      >
         Agregar al Carrito
       </button>
     </div>
