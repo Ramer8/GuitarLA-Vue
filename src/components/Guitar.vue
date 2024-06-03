@@ -16,7 +16,11 @@ const props = defineProps({
 <template>
   <div class="col-md-6 col-lg-4 my-4 row align-items-center">
     <div class="col-4">
-      <img class="img-fluid" src="/img/guitarra_12.jpg" alt="imagen guitarra" />
+      <img
+        class="img-fluid"
+        :src="'./img/' + guitar.image + '.jpg '"
+        :alt="'imagen guitar ' + guitar.name"
+      />
     </div>
     <div class="col-8">
       <h3 class="text-black fs-4 fw-bold text-uppercase">
