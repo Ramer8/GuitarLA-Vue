@@ -2,6 +2,8 @@
 const props = defineProps({
   kart: { type: Array, required: true },
 })
+
+defineEmits(["increaseAmount", "decreaseAmount"])
 </script>
 
 <template>
@@ -50,9 +52,21 @@ const props = defineProps({
                       <td>{{ product.name }}</td>
                       <td class="fw-bold">${{ product.price }}</td>
                       <td class="flex align-items-start gap-4">
-                        <button type="button" class="btn btn-dark">-</button>
+                        <button
+                          type="button"
+                          class="btn btn-dark"
+                          @:click="$emit('decreaseAmount', product.id)"
+                        >
+                          -
+                        </button>
                         {{ product.amount }}
-                        <button type="button" class="btn btn-dark">+</button>
+                        <button
+                          type="button"
+                          class="btn btn-dark"
+                          @:click="$emit('increaseAmount', product.id)"
+                        >
+                          +
+                        </button>
                       </td>
                       <td>
                         <button class="btn btn-danger" type="button">X</button>

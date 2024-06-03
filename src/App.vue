@@ -15,14 +15,37 @@ onMounted(() => {
 })
 
 const addKart = (guitar) => {
-  kart.value.push(guitar)
-  kart.amount = 1
-  console.log(kart.value)
+  const existKart = kart.value.findIndex((product) => product.id === guitar.id)
+
+  if (existKart >= 0) {
+    kart.value[existKart].amount++
+    console.log(guitar.amount)
+  } else {
+    guitar.amount = 1
+    kart.value.push(guitar)
+  }
+}
+const decreaseAmount = (id) => {
+  const index = kart.value.findIndex((product) => product.id === id)
+  if (kart.value[index].amount <= 1) return
+  kart.value[index].amount--
+  console.log(id)
+  // guitar.amount--
+}
+const increaseAmount = (id) => {
+  console.log(id)
+  const index = kart.value.findIndex((product) => product.id === id)
+  kart.value[index].amount++
+  // guitar.amount++
 }
 </script>
 
 <template>
-  <Header :kart="kart" />
+  <Header
+    v-bind:kart="kart"
+    @decrease-amount="decreaseAmount"
+    @increase-amount="increaseAmount"
+  />
 
   <main class="container-xl mt-5">
     <h2 class="text-center">Nuestra Colección</h2>
