@@ -39,19 +39,19 @@ const props = defineProps({
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr v-for="product in kart">
                       <td>
                         <img
                           class="img-fluid"
-                          src="/img/guitarra_02.jpg"
-                          alt="imagen guitarra"
+                          :src="'/img/' + product.image + '.jpg'"
+                          :alt="'imagen guitar ' + 'product.name'"
                         />
                       </td>
-                      <td>SRV</td>
-                      <td class="fw-bold">$299</td>
+                      <td>{{ product.name }}</td>
+                      <td class="fw-bold">${{ product.price }}</td>
                       <td class="flex align-items-start gap-4">
                         <button type="button" class="btn btn-dark">-</button>
-                        1
+                        {{ product.amount }}
                         <button type="button" class="btn btn-dark">+</button>
                       </td>
                       <td>
