@@ -6,8 +6,8 @@ const props = defineProps({
 })
 
 defineEmits([
-  "increaseAmount",
-  "decreaseAmount",
+  "increase-amount",
+  "decrease-amount",
   "add-Cart",
   "delete-product",
   "empty-cart",
@@ -70,7 +70,7 @@ const totalPay = computed(() => {
                         <button
                           type="button"
                           class="btn btn-dark"
-                          @click="$emit('decreaseAmount', product.id)"
+                          @click="$emit('decrease-amount', product.id)"
                         >
                           -
                         </button>
@@ -78,7 +78,7 @@ const totalPay = computed(() => {
                         <button
                           type="button"
                           class="btn btn-dark"
-                          @:click="$emit('increaseAmount', product.id)"
+                          @:click="$emit('increase-amount', product.id)"
                         >
                           +
                         </button>

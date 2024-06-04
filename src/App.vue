@@ -12,40 +12,51 @@ const guitarOffer = ref([])
 onMounted(() => {
   guitars.value = db
   guitarOffer.value = db[3]
+  const cartStorage = localStorage.getItem("cart")
+  //check if exist any element in local storage
+  if (cartStorage) {
+    cart.value = JSON.parse(cartStorage)
+  }
 })
+// save in localStorage
+const saveLocalStorage = () => {
+  localStorage.setItem("cart", JSON.stringify(cart.value))
+}
 
 const addCart = (guitar) => {
   const existCart = cart.value.findIndex((product) => product.id === guitar.id)
 
   if (existCart >= 0) {
     cart.value[existCart].amount++
-    console.log(guitar.amount)
   } else {
     guitar.amount = 1
     cart.value.push(guitar)
   }
+  saveLocalStorage()
 }
 const decreaseAmount = (id) => {
   //search guitar id to decrease amount
   const index = cart.value.findIndex((product) => product.id === id)
   if (cart.value[index].amount <= 1) return
   cart.value[index].amount--
+  saveLocalStorage()
 }
 const increaseAmount = (id) => {
-  console.log(id)
   const index = cart.value.findIndex((product) => product.id === id)
   if (cart.value[index].amount >= 5) return
 
   cart.value[index].amount++
+  saveLocalStorage()
 }
 const deleteProduct = (id) => {
   // get elements diferent of this id
   cart.value = cart.value.filter((product) => product.id !== id)
+  saveLocalStorage()
 }
 const emptyCart = (id) => {
-  console.log("..borrando todos")
   // delete all elements
   cart.value = []
+  saveLocalStorage()
 }
 </script>
 
