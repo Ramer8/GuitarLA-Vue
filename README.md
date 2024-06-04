@@ -1,4 +1,4 @@
-### Shopping Cart
+### Shopping Cart on VUE 3
 
 ---
 
@@ -27,6 +27,8 @@ https://meek-lebkuchen-4f17ce.netlify.app/
 
 --- -->
 
+---
+
 [![GITHUB]][github-url]![VUE.js]![HTML]![JAVASCRIPT]<a href="https://developer.mozilla.org/es/docs/Web/CSS"><img src= "https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white"/>![Netlify]
 
 [VUE.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vue.js&logoColor=4FC08D
@@ -53,15 +55,21 @@ https://meek-lebkuchen-4f17ce.netlify.app/
 [GIT]: https://img.shields.io/badge/git-F54D27?style=for-the-badge&logo=git&logoColor=white
 [git-url]: https://git-scm.com/
 
-Thank you very much for your interest in my project. It's a simple shopping cart on vue.js
+Thank you very much for your interest in my project. It's a shopping cart on vue.js
 
 ---
 
 ### Description
 
 The users can add guitars to shopping cart, increase or decrease ammount and empty cart
-The cart persist in localStorage
-Don't use any data base. Is only frontend project with mockup data
+The shopping cart persist in localStorage
+Don't use any data base. Is only frontend project with mockup data.
+
+---
+
+### Composition API
+
+In this project I use Composition API. The advantage of Composition API is that it enables clean, efficient logic reuse in the form of Composable functions. It solves all the drawbacks of mixins, the primary logic reuse mechanism for Options API.
 
 ---
 
