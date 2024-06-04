@@ -5,7 +5,13 @@ const props = defineProps({
   guitarOffer: { type: Object, required: true },
 })
 
-defineEmits(["increaseAmount", "decreaseAmount", "add-Cart", "delete-product"])
+defineEmits([
+  "increaseAmount",
+  "decreaseAmount",
+  "add-Cart",
+  "delete-product",
+  "empty-cart",
+])
 
 const totalPay = computed(() => {
   return props.cart.reduce(
@@ -93,7 +99,12 @@ const totalPay = computed(() => {
                 <p class="text-end">
                   Total to pay: <span class="fw-bold">${{ totalPay }}</span>
                 </p>
-                <button class="btn btn-dark w-100 mt-3 p-2">Empty Cart</button>
+                <button
+                  class="btn btn-dark w-100 mt-3 p-2"
+                  @:click="$emit('empty-cart')"
+                >
+                  Empty Cart
+                </button>
               </div>
             </div>
           </div>

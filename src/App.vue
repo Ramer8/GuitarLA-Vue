@@ -4,9 +4,7 @@ import { db } from "./data/guitars"
 import Guitar from "./components/Guitar.vue"
 import Header from "./components/Header.vue"
 import Footer from "./components/Footer.vue"
-// const state = reactive({
-//   guitars: db,
-// })
+
 const guitars = ref([])
 const cart = ref([])
 const guitarOffer = ref([])
@@ -45,6 +43,7 @@ const deleteProduct = (id) => {
   cart.value = cart.value.filter((product) => product.id !== id)
 }
 const emptyCart = (id) => {
+  console.log("..borrando todos")
   // delete all elements
   cart.value = []
 }
