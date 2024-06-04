@@ -26,6 +26,7 @@ const addKart = (guitar) => {
   }
 }
 const decreaseAmount = (id) => {
+  //search guitar id to decrease amount
   const index = kart.value.findIndex((product) => product.id === id)
   if (kart.value[index].amount <= 1) return
   kart.value[index].amount--
@@ -35,6 +36,8 @@ const decreaseAmount = (id) => {
 const increaseAmount = (id) => {
   console.log(id)
   const index = kart.value.findIndex((product) => product.id === id)
+  if (kart.value[index].amount >= 5) return
+
   kart.value[index].amount++
   // guitar.amount++
 }
