@@ -1,6 +1,6 @@
 <script setup>
 const props = defineProps({
-  kart: { type: Array, required: true },
+  cart: { type: Array, required: true },
 })
 
 defineEmits(["increaseAmount", "decreaseAmount"])
@@ -26,22 +26,22 @@ defineEmits(["increaseAmount", "decreaseAmount"])
             />
 
             <div id="carrito" class="bg-white p-3">
-              <p v-if="kart.length === 0" class="text-center m-0">
-                El carrito esta vacio
+              <p v-if="cart.length === 0" class="text-center m-0">
+                Cart is empty
               </p>
               <div v-else>
-                <table v-if="kart.length > 0" class="w-100 table">
+                <table v-if="cart.length > 0" class="w-100 table">
                   <thead>
                     <tr>
-                      <th>Imagen</th>
-                      <th>Nombre</th>
-                      <th>Precio</th>
-                      <th>Cantidad</th>
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                      <th>Amount</th>
                       <th></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="product in kart">
+                    <tr v-for="product in cart">
                       <td>
                         <img
                           class="img-fluid"
@@ -76,11 +76,9 @@ defineEmits(["increaseAmount", "decreaseAmount"])
                 </table>
 
                 <p class="text-end">
-                  Total pagar: <span class="fw-bold">$899</span>
+                  Total to pay: <span class="fw-bold">$899</span>
                 </p>
-                <button class="btn btn-dark w-100 mt-3 p-2">
-                  Vaciar Carrito
-                </button>
+                <button class="btn btn-dark w-100 mt-3 p-2">Empty Cart</button>
               </div>
             </div>
           </div>
@@ -90,19 +88,14 @@ defineEmits(["increaseAmount", "decreaseAmount"])
 
       <div class="row mt-5">
         <div class="col-md-6 text-center text-md-start pt-5">
-          <h1 class="display-2 fw-bold">Modelo VAI</h1>
-          <p class="mt-5 fs-5 text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
-            possimus quibusdam dolor nemo velit quo, fuga omnis, iure molestias
-            optio tempore sint at ipsa dolorum odio exercitationem eos inventore
-            odit.
-          </p>
-          <p class="text-primary fs-1 fw-black">$399</p>
+          <h1 class="display-2 fw-bold">guitar</h1>
+          <p class="mt-5 fs-5 text-white">description</p>
+          <p class="text-primary fs-1 fw-black">$Free</p>
           <button
             type="button"
             class="btn fs-4 bg-primary text-white py-2 px-5"
           >
-            Agregar al Carrito
+            Add to Cart
           </button>
         </div>
       </div>
