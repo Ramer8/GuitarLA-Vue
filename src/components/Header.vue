@@ -1,9 +1,10 @@
 <script setup>
 const props = defineProps({
   cart: { type: Array, required: true },
+  guitarOffer: { type: Object, required: true },
 })
 
-defineEmits(["increaseAmount", "decreaseAmount"])
+defineEmits(["increaseAmount", "decreaseAmount", "add-Cart"])
 </script>
 
 <template>
@@ -55,7 +56,7 @@ defineEmits(["increaseAmount", "decreaseAmount"])
                         <button
                           type="button"
                           class="btn btn-dark"
-                          @:click="$emit('decreaseAmount', product.id)"
+                          @click="$emit('decreaseAmount', product.id)"
                         >
                           -
                         </button>
@@ -88,12 +89,13 @@ defineEmits(["increaseAmount", "decreaseAmount"])
 
       <div class="row mt-5">
         <div class="col-md-6 text-center text-md-start pt-5">
-          <h1 class="display-2 fw-bold">guitar</h1>
-          <p class="mt-5 fs-5 text-white">description</p>
-          <p class="text-primary fs-1 fw-black">$Free</p>
+          <h1 class="display-2 fw-bold">Model:{{ guitarOffer.name }}</h1>
+          <p class="mt-5 fs-5 text-white">{{ guitarOffer.description }}</p>
+          <p class="text-primary fs-1 fw-black">${{ guitarOffer.price }}</p>
           <button
             type="button"
             class="btn fs-4 bg-primary text-white py-2 px-5"
+            @:click="$emit('add-Cart', guitarOffer)"
           >
             Add to Cart
           </button>

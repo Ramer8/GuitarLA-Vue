@@ -9,11 +9,11 @@ import Footer from "./components/Footer.vue"
 // })
 const guitars = ref([])
 const cart = ref([])
-// const guitar = ref([])
+const guitarOffer = ref([])
 
 onMounted(() => {
   guitars.value = db
-  // guitars.value = db[3]
+  guitarOffer.value = db[3]
 })
 
 const addCart = (guitar) => {
@@ -45,8 +45,10 @@ const increaseAmount = (id) => {
 <template>
   <Header
     v-bind:cart="cart"
+    :guitarOffer="guitarOffer"
     @decrease-amount="decreaseAmount"
     @increase-amount="increaseAmount"
+    @add-Cart="addCart"
   />
 
   <main class="container-xl mt-5">
