@@ -40,6 +40,14 @@ const increaseAmount = (id) => {
 
   cart.value[index].amount++
 }
+const deleteProduct = (id) => {
+  // get elements diferent of this id
+  cart.value = cart.value.filter((product) => product.id !== id)
+}
+const emptyCart = (id) => {
+  // delete all elements
+  cart.value = []
+}
 </script>
 
 <template>
@@ -49,6 +57,8 @@ const increaseAmount = (id) => {
     @decrease-amount="decreaseAmount"
     @increase-amount="increaseAmount"
     @add-Cart="addCart"
+    @delete-product="deleteProduct"
+    @empty-cart="emptyCart"
   />
 
   <main class="container-xl mt-5">

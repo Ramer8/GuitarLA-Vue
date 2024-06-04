@@ -1,10 +1,18 @@
 <script setup>
+import { computed } from "vue"
 const props = defineProps({
   cart: { type: Array, required: true },
   guitarOffer: { type: Object, required: true },
 })
 
-defineEmits(["increaseAmount", "decreaseAmount", "add-Cart"])
+defineEmits(["increaseAmount", "decreaseAmount", "add-Cart", "delete-product"])
+
+const totalPay = computed(() => {
+  return props.cart.reduce(
+    (total, product) => total + product.amount * product.price,
+    0
+  )
+})
 </script>
 
 <template>
@@ -70,14 +78,20 @@ defineEmits(["increaseAmount", "decreaseAmount", "add-Cart"])
                         </button>
                       </td>
                       <td>
-                        <button class="btn btn-danger" type="button">X</button>
+                        <button
+                          class="btn btn-danger"
+                          type="button"
+                          @:click="$emit('delete-product', product.id)"
+                        >
+                          X
+                        </button>
                       </td>
                     </tr>
                   </tbody>
                 </table>
 
                 <p class="text-end">
-                  Total to pay: <span class="fw-bold">$899</span>
+                  Total to pay: <span class="fw-bold">${{ totalPay }}</span>
                 </p>
                 <button class="btn btn-dark w-100 mt-3 p-2">Empty Cart</button>
               </div>
