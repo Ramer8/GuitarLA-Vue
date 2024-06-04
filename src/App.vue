@@ -11,18 +11,22 @@ const guitarOffer = ref([])
 
 onMounted(() => {
   guitars.value = db
-  guitarOffer.value = db[3]
+
   const cartStorage = localStorage.getItem("cart")
   //check if exist any element in local storage
   if (cartStorage) {
     cart.value = JSON.parse(cartStorage)
   }
+
+  //set random guitar offer
+  const randomGuitar = Math.floor(Math.random() * guitars.value.length + 1)
+  guitarOffer.value = db[randomGuitar]
 })
+
 // save in localStorage
 const saveLocalStorage = () => {
   localStorage.setItem("cart", JSON.stringify(cart.value))
 }
-
 const addCart = (guitar) => {
   const existCart = cart.value.findIndex((product) => product.id === guitar.id)
 

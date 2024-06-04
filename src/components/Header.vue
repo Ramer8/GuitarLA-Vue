@@ -114,7 +114,7 @@ const totalPay = computed(() => {
 
       <div class="row mt-5">
         <div class="col-md-6 text-center text-md-start pt-5">
-          <h1 class="display-2 fw-bold">Model:{{ guitarOffer.name }}</h1>
+          <h1 class="display-2 fw-bold">Model {{ guitarOffer.name }}</h1>
           <p class="mt-5 fs-5 text-white">{{ guitarOffer.description }}</p>
           <p class="text-primary fs-1 fw-black">${{ guitarOffer.price }}</p>
           <button
