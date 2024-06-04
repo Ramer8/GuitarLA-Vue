@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, onMounted } from "vue"
+import { ref, reactive, onMounted, watch } from "vue"
 import { db } from "./data/guitars"
 import Guitar from "./components/Guitar.vue"
 import Header from "./components/Header.vue"
@@ -8,6 +8,16 @@ import Footer from "./components/Footer.vue"
 const guitars = ref([])
 const cart = ref([])
 const guitarOffer = ref([])
+
+watch(
+  cart,
+  () => {
+    saveLocalStorage()
+  },
+  {
+    deep: true,
+  }
+)
 
 onMounted(() => {
   guitars.value = db
@@ -36,31 +46,26 @@ const addCart = (guitar) => {
     guitar.amount = 1
     cart.value.push(guitar)
   }
-  saveLocalStorage()
 }
 const decreaseAmount = (id) => {
   //search guitar id to decrease amount
   const index = cart.value.findIndex((product) => product.id === id)
   if (cart.value[index].amount <= 1) return
   cart.value[index].amount--
-  saveLocalStorage()
 }
 const increaseAmount = (id) => {
   const index = cart.value.findIndex((product) => product.id === id)
   if (cart.value[index].amount >= 5) return
 
   cart.value[index].amount++
-  saveLocalStorage()
 }
 const deleteProduct = (id) => {
   // get elements diferent of this id
   cart.value = cart.value.filter((product) => product.id !== id)
-  saveLocalStorage()
 }
 const emptyCart = (id) => {
   // delete all elements
   cart.value = []
-  saveLocalStorage()
 }
 </script>
 
